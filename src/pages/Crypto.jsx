@@ -27,8 +27,8 @@ const Crypto = () => {
             }}
             className="card"
           >
-            <div className="img">
-              <img src={video.thumbnailUrl}></img>
+            <div className="imxg">
+              <img className="img" src={video.thumbnailUrl}></img>
             </div>
             <div className="text">
               <p className="h3">{video.title}</p>

@@ -1,0 +1,67 @@
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  margin-top: 30px;
+}
+
+.btn {
+  position: relative;
+  height: 35px;
+  width: 90px;
+  background-color: white;
+  overflow: hidden;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.btn::before {
+  content: "";
+  height: 100%;
+  width: 0; /* Start with 0 width */
+  background-color: green;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  transition: width 0.3s; /* Transition the width property */
+}
+
+.btn:hover::before {
+  width: 100%; /* Expand the width to 100% on hover */
+}
+
+.btn:hover {
+  color: white;
+}
+
+.btn-span {
+  position: relative;
+  z-index: 2;
+  color: black;
+}
+
+.btn:hover .btn-span {
+  color: white;
+}
+
+.click {
+  background-color: green;
+}
+.click span {
+  color: white;
+}
+
+.chart {
+  display: flex;
+  height: 500px;
+  width: 800px;
+  padding-top: 20px;
+}

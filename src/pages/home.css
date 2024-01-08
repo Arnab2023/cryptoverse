@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+
+table {
+  border-collapse: collapse;
+  width: 90%;
+  margin: auto;
+  font-family: "Poppins", sans-serif;
+}
+
+tr {
+  cursor: pointer;
+}
+th {
+  padding: 8px;
+  text-align: right;
+  border-bottom: 1px solid #ddd;
+}
+
+td {
+  position: relative;
+  padding: 8px;
+  text-align: right;
+  border-bottom: 1px solid #ddd;
+}
+
+.right {
+  text-align: left;
+}
+
+.center {
+  display: flex;
+  padding-left: 50%;
+  justify-content: center;
+}
+
+.red {
+  color: red;
+}
+.green {
+  color: green;
+}
+
+.img {
+  width: 20px;
+  height: 20px;
+  /* object-fit: cover; */
+  margin-right: 5px;
+  margin-bottom: -4px;
+}
+
+/* Center-align the pagination at the bottom of the webpage */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Poppins", sans-serif;
+  margin-top: 20px;
+  /* margin: auto; */
+  text-align: center;
+  bottom: 0;
+  background-color: #ffffff; /* Add background color to make it stand out */
+}
+
+.pagination ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.pagination li {
+  margin: 0 5px;
+}
+
+.pagination span {
+  text-decoration: none;
+
+  color: #000000;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination span:hover {
+  background-color: #a0a3a5;
+}
+
+.clicked {
+  background-color: #a0a3a5;
+}
+
+.load-img {
+  display: flex;
+
+  justify-content: center;
+}
+
+/* .score {
+  height: 10px;
+  background-color: green;
+  width: 50px;
+  border-radius: 12px;
+}
+
+.label {
+  font-size: 20px;
+  width: 60%;
+  color: green;
+  padding-left: 82px;
+  height: 20px;
+} */

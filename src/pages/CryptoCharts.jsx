@@ -7,7 +7,7 @@ import Chart from "../components/Chart/Chart";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Details from "../components/details/Details";
-const CryptoCharts = ({ name ,setProgress}) => {
+const CryptoCharts = ({ name, setProgress }) => {
   const [prices, setPrices] = useState(null);
   const [market, setMarket] = useState(null);
   const [activeButton, setActiveButton] = useState("price");
@@ -17,7 +17,7 @@ const CryptoCharts = ({ name ,setProgress}) => {
       const { data } = await axios.get(
         `https://api.coingecko.com/api/v3/coins/${name}/market_chart?vs_currency=usd&days=1`
       );
-      setProgress(100)
+      setProgress(100);
       setPrices(data.prices);
       setMarket(data.market_caps);
     } catch (e) {
@@ -25,31 +25,31 @@ const CryptoCharts = ({ name ,setProgress}) => {
     }
   };
 
-  const dateTime=(dateStamp)=>{
-    const dateString=new Date(dateStamp)
-     const date = dateString.toLocaleDateString(); 
+  const dateTime = (dateStamp) => {
+    const dateString = new Date(dateStamp);
+    const date = dateString.toLocaleDateString();
     const time = dateString.toLocaleTimeString();
-    const dateParts =date.split("/"); 
+    const dateParts = date.split("/");
 
-const dateObject = new Date(`${dateParts[2]}-${dateParts[0]}-${dateParts[1]}`);
+    const dateObject = new Date(
+      `${dateParts[2]}-${dateParts[0]}-${dateParts[1]}`
+    );
 
-const formattedDate = dateObject.toLocaleDateString("en-GB", {
-  day: "numeric",
-  month: "long",
-  year: "numeric"
-});
+    const formattedDate = dateObject.toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
 
-    return `${formattedDate},${time}`
-  }
+    return `${formattedDate},${time}`;
+  };
 
   // mapping  x labels and y labels
 
-
   const price_labels = prices?.map((x) => dateTime(x[0]));
   const price_datas = prices?.map((x) => x[1]);
-  const market_labels = market?.map((x) =>dateTime(x[0]));
+  const market_labels = market?.map((x) => dateTime(x[0]));
   const market_datas = market?.map((x) => x[1]);
-
 
   // console.log(datas);
   // console.log(labels);
@@ -61,7 +61,7 @@ const formattedDate = dateObject.toLocaleDateString("en-GB", {
 
   return (
     <div className="Page-box">
-      <div className="chart-container">  
+      <div className="chart-container">
         <div className="button-container">
           <button
             className={activeButton == "price" ? "btn click" : "btn"}

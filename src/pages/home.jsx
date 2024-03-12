@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable no-unused-vars */
 import axios from "axios";
@@ -8,7 +9,7 @@ import List from "../components/list/List";
 import "./home.css";
 import loaderImg from "../assets/loader.gif";
 import { useNavigate } from "react-router-dom";
-const Home = ({setProgress}) => {
+const Home = ({ setProgress }) => {
   const [coins, setCoins] = useState(null);
   const [page, setPage] = useState(1);
   const [clicked, setClicked] = useState(1);
@@ -21,8 +22,8 @@ const Home = ({setProgress}) => {
         `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=${page}&sparkline=false`
       );
       setCoins(data);
-      setLoading(false)
-      setProgress(100)
+      setLoading(false);
+      setProgress(100);
     } catch (e) {
       console.log(e);
     }

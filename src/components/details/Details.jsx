@@ -8,9 +8,10 @@ import "./Details.css";
 import CryptoCharts from "../../pages/CryptoCharts";
 import CryptoConverter from "./Converter";
 
-const Details = () => {
+const Details = ({setProgress}) => {
   const { name } = useParams();
   const [detail, setDetail] = useState("");
+  const[loading,setLoading] = useState(true);
 
   const fetchdata = async () => {
     try {
@@ -18,7 +19,8 @@ const Details = () => {
       const { data } = await axios.get(
         `https://api.coingecko.com/api/v3/coins/${name}`
       );
-      console.log(data);
+      setProgress(60)
+      setLoading(false);
       setDetail(data);
     } catch (e) {
       console.log(e);
@@ -30,6 +32,8 @@ const Details = () => {
   }, []);
 
   return (
+    <>
+  {loading?(<></>):(<>
     <div className="details">
       <div className="decp-convt">
         <div className="decp">
@@ -49,11 +53,14 @@ const Details = () => {
         <CryptoConverter name={name} />
       </div>
 
-      <CryptoCharts name={name} />
+      <CryptoCharts name={name} setProgress={setProgress} />
       <div className="info">
         <p dangerouslySetInnerHTML={{ __html: detail?.description?.en }} />
       </div>
     </div>
+  </>)}
+    
+    </>
   );
 };
 

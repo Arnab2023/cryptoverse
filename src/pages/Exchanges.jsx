@@ -9,12 +9,14 @@ import Footer from "../components/footer/Footer";
 import loaderImg from "../assets/loader.gif";
 // import ProgressBar from "@ramonak/react-progress-bar";
 import Bar from "../components/ProgressBar/Bar";
-
-const Exchanges = () => {
+import {useNavigate} from "react-router-dom"
+const Exchanges = ({setProgress}) => {
   const [exchange, setExchange] = useState(null);
   const [page, setPage] = useState(1);
   const [clicked, setClicked] = useState(1);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  const navigate=useNavigate()
 
   const fetchdata = async () => {
     try {
@@ -22,6 +24,8 @@ const Exchanges = () => {
         `https://api.coingecko.com/api/v3/exchanges?per_page=20&page=${page}`
       );
       setExchange(data);
+      setProgress(100)
+      setLoading(false)
     } catch (e) {
       console.log(e);
     }
@@ -61,7 +65,7 @@ const Exchanges = () => {
                         {exchange?.trust_score_rank}
                       </td>
 
-                      <td className="right">
+                      <td className="right" >
                         <img src={exchange.image} className="img" alt="" />
                         {exchange?.name}
                       </td>

@@ -7,9 +7,12 @@ import "./Crypto.css";
 import videoData from "../components/Courses/Courses";
 import VideoPop from "../components/VideoPop/VideoPop";
 
-const Crypto = () => {
+const Crypto = ({setProgress}) => {
   const [show, setShow] = useState(false);
   const [videoId, setVideoId] = useState(null);
+  useEffect(() =>{
+   setProgress(100)
+  },[])
 
   return (
     <div>

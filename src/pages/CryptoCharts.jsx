@@ -11,13 +11,15 @@ const CryptoCharts = ({ name ,setProgress}) => {
   const [prices, setPrices] = useState(null);
   const [market, setMarket] = useState(null);
   const [activeButton, setActiveButton] = useState("price");
-
+  const [loading, setLoading] = useState(true)
   const fetchdata = async () => {
     try {
       const { data } = await axios.get(
         `https://api.coingecko.com/api/v3/coins/${name}/market_chart?vs_currency=usd&days=1`
       );
+      setLoading(false)
       setProgress(100)
+      
       setPrices(data.prices);
       setMarket(data.market_caps);
     } catch (e) {
@@ -60,7 +62,9 @@ const formattedDate = dateObject.toLocaleDateString("en-GB", {
   }, []);
 
   return (
-    <div className="Page-box">
+    <>
+    {!loading && <>
+      <div className="Page-box">
       <div className="chart-container">  
         <div className="button-container">
           <button
@@ -91,6 +95,9 @@ const formattedDate = dateObject.toLocaleDateString("en-GB", {
         )}
       </div>
     </div>
+    </>}
+    
+    </>
   );
 };
 

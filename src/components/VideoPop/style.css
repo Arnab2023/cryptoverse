@@ -36,10 +36,12 @@
 
 .videoPopup .videoPlayer .closeBtn {
   position: absolute;
-  top: -20px;
+  top: -30px;
   right: 0;
   color: white;
   cursor: pointer;
+  
+  
 }
 
 .videoPopup.visible {
@@ -54,3 +56,4 @@
 .videoPopup.visible .videoPlayer {
   transform: scale(1);
 }
+ 

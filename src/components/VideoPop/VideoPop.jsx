@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import ReactPlayer from "react-player/youtube";
+import { RxCross2 } from "react-icons/rx";
 
 import "./style.css";
 
@@ -15,7 +16,7 @@ const VideoPop = ({ show, setShow, videoId, setVideoId }) => {
       <div className="opacityLayer" onClick={hidePopup}></div>
       <div className="videoPlayer">
         <span className="closeBtn" onClick={hidePopup}>
-          X
+          <RxCross2 size={32}/>
         </span>
         <ReactPlayer
           url={`https://www.youtube.com/watch?v=${videoId}`}

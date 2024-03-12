@@ -5,9 +5,10 @@ import "./news.css";
 import axios from "axios";
 import aayeVoice from "../assets/aaye.mp3";
 import Header from "../components/header/Header";
-const News = () => {
+const News = ({setProgress}) => {
   const [news, setNews] = useState(null);
   const [isHovered, setIsHovered] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const audio = new Audio({ aayeVoice });
   const aayeUrl =
@@ -16,6 +17,8 @@ const News = () => {
     try {
       const { data } = await axios.get(`https://api.coingecko.com/api/v3/news`);
       setNews(data.data);
+      setLoading(false);
+      setProgress(100)
       console.log(news);
     } catch (e) {
       console.log(e);
@@ -38,6 +41,7 @@ const News = () => {
 
   return (
     <>
+    {loading?(<></>):(  <>
       <Header />
       <div className="content-wrapper">
         {news?.map((info, index) => (
@@ -75,6 +79,8 @@ const News = () => {
           </div>
         ))}
       </div>
+    </>)}
+  
     </>
   );
 };

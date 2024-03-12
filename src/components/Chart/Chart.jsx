@@ -2,6 +2,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 import React from "react";
+import numeral from "numeral";
 // import "./Chart.css";
 import {
   Chart as ChartJS,
@@ -28,6 +29,8 @@ ChartJS.register(
 );
 
 const Chart = ({ datas, labels, text }) => {
+
+
   const options = {
     responsive: true,
     maintainAspectRatio: false,
@@ -48,7 +51,20 @@ const Chart = ({ datas, labels, text }) => {
           display: false,
         },
         ticks: {
-          display: false,
+          
+          callback: (value) => {
+            let testReg=/\b([01]?[0-9]|2[0-3]):00\b/
+            let stringValue = labels[value];
+            let [,x]=stringValue.split(',');
+            let y= x.split(':');
+            if(testReg.test(`${y[0]}:${y[1]}`)){
+              return `${y[0]}:${y[1]} ${y[2].slice(-2)}`
+            }
+            else{
+              return ""
+            }
+        },
+      
         },
       },
       y: {
@@ -56,7 +72,7 @@ const Chart = ({ datas, labels, text }) => {
           display: false,
         },
         ticks: {
-          callback: (value) => `$${value}`,
+          callback: (value) => `$${numeral(value).format('0.00a')}`,
         },
       },
     },

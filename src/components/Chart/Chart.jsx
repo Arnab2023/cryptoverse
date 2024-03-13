@@ -29,6 +29,8 @@ ChartJS.register(
 );
 
 const Chart = ({ datas, labels, text }) => {
+
+   
   const options = {
     responsive: true,
     maintainAspectRatio: false,
@@ -52,12 +54,11 @@ const Chart = ({ datas, labels, text }) => {
           callback: (value) => {
             let testReg = /\b([01]?[0-9]|2[0-3]):00\b/;
             let stringValue = labels[value];
-            let [, x] = stringValue.split(",");
-            let y = x.split(":");
-            if (testReg.test(`${y[0]}:${y[1]}`)) {
-              return `${y[0]}:${y[1]} ${y[2].slice(-2)}`;
-            } else {
-              return "";
+            let [,x]=stringValue.split(',');
+            let y= x.split(':');
+            if(testReg.test(`${y[0]}:${y[1]}`)){
+              console.log(`${y[0]}:${y[1]} ${y[2].slice(-2)}`)
+              return `${y[0]}:${y[1]} ${y[2].slice(-2)}`
             }
           },
         },

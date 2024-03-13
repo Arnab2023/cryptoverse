@@ -13,6 +13,7 @@ const Details = ({setProgress}) => {
   const [detail, setDetail] = useState("");
   const[loading,setLoading] = useState(true);
 
+  useEffect(()=>{},[loading])
   const fetchdata = async () => {
     try {
       console.log(name);
@@ -20,17 +21,18 @@ const Details = ({setProgress}) => {
         `https://api.coingecko.com/api/v3/coins/${name}`
       );
       setProgress(60)
-      setLoading(false);
+      setLoading(false)
       setDetail(data);
     } catch (e) {
       console.log(e);
     }
   };
 
+  
   useEffect(() => {
     fetchdata();
   }, []);
-
+ 
   return (
     <>
   {loading?(<></>):(<>
@@ -53,7 +55,7 @@ const Details = ({setProgress}) => {
         <CryptoConverter name={name} />
       </div>
 
-      <CryptoCharts name={name} setProgress={setProgress} />
+      <CryptoCharts name={name} setProgress={setProgress}  setLoading={setLoading}/>
       <div className="info">
         <p dangerouslySetInnerHTML={{ __html: detail?.description?.en }} />
       </div>

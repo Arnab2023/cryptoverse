@@ -17,13 +17,13 @@ const CryptoCharts = ({ name, setProgress }) => {
       const { data } = await axios.get(
         `https://api.coingecko.com/api/v3/coins/${name}/market_chart?vs_currency=usd&days=1`
       );
-<<<<<<< HEAD
+
       setLoading(false)
       setProgress(100)
       
-=======
+
       setProgress(100);
->>>>>>> a72ddffb2bcdfec23ad2e2f3b6a1d736464c389a
+
       setPrices(data.prices);
       setMarket(data.market_caps);
     } catch (e) {
@@ -66,15 +66,15 @@ const CryptoCharts = ({ name, setProgress }) => {
   }, []);
 
   return (
-<<<<<<< HEAD
+
     <>
     {!loading && <>
       <div className="Page-box">
       <div className="chart-container">  
-=======
+
     <div className="Page-box">
       <div className="chart-container">
->>>>>>> a72ddffb2bcdfec23ad2e2f3b6a1d736464c389a
+
         <div className="button-container">
           <button
             className={activeButton == "price" ? "btn click" : "btn"}

@@ -66,30 +66,26 @@ const CryptoCharts = ({ name, setProgress }) => {
   }, []);
 
   return (
-
     <>
-    {!loading && <>
-      <div className="Page-box">
-      <div className="chart-container">  
-
+    {!loading && 
+    <>
     <div className="Page-box">
       <div className="chart-container">
-
         <div className="button-container">
           <button
-            className={activeButton == "price" ? "btn click" : "btn"}
+            className={activeButton === "price" ? "btn click" : "btn"}
             onClick={() => setActiveButton("price")}
           >
             <span className="btn-span">Prices</span>{" "}
           </button>
           <button
-            className={activeButton == "market" ? "btn click" : "btn"}
+            className={activeButton === "market" ? "btn click" : "btn"}
             onClick={() => setActiveButton("market")}
           >
             <span className="btn-span">Market-Prices</span>{" "}
           </button>
         </div>
-        {activeButton == "price" ? (
+        {activeButton === "price" ? (
           <div className="chart">
             <Chart datas={price_datas} labels={price_labels} text="Price" />
           </div>
@@ -105,9 +101,10 @@ const CryptoCharts = ({ name, setProgress }) => {
       </div>
     </div>
     </>}
-    
+   
     </>
   );
+  
 };
 
 export default CryptoCharts;
